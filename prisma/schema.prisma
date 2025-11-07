@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Booking {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerName  String
+  email         String
+  phone         String
+  serviceType   String
+  poolSize      String?
+  address       String
+  city          String
+  postalCode    String?
+  preferredDate DateTime
+  preferredTime String
+  message       String?
+  status        String   @default("pending") // pending, confirmed, completed, cancelled
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Testimonial {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerName  String
+  rating        Int      @default(5)
+  comment       String
+  serviceType   String
+  isApproved    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model ContactMessage {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  email      String
+  phone      String?
+  subject    String
+  message    String
+  isRead     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model Service {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  category    String
+  description String
+  price       String?
+  duration    String?
+  features    String[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Analytics {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  date             DateTime @default(now())
+  bookingsCount    Int      @default(0)
+  pageViews        Int      @default(0)
+  contactFormCount Int      @default(0)
+  avgSatisfaction  Float    @default(0)
+}
