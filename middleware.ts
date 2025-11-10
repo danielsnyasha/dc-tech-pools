@@ -26,6 +26,8 @@ export default clerkMiddleware(async (auth, req) => {
 
     // Get user's primary email from sessionClaims
     const userEmail = sessionClaims?.email as string | undefined
+    console.log("User Email from sessionClaims:", userEmail);
+    console.log("Default Admin Emails:", DEFAULT_ADMIN_EMAILS);
 
     if (!userEmail) {
       return NextResponse.redirect(new URL('/unauthorized', req.url))
@@ -33,10 +35,12 @@ export default clerkMiddleware(async (auth, req) => {
 
     // Check if email is in the default whitelist - if yes, allow access
     if (DEFAULT_ADMIN_EMAILS.includes(userEmail)) {
+      console.log("User email is in the whitelist. Granting access.");
       return NextResponse.next()
     }
 
     // For non-default emails, deny access
+    console.log("User email is NOT in the whitelist. Denying access.");
     return NextResponse.redirect(new URL('/unauthorized', req.url))
   }
 })
