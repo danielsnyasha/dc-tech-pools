@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Mail, Waves } from "lucide-react";
+import { Menu, X, Phone, Mail, Waves, LogOut } from "lucide-react";
+import { SignOutButton, useAuth } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
 
@@ -19,6 +20,7 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isSignedIn } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,6 +87,20 @@ export default function Navbar() {
                     Admin Portal
                   </Button>
                 </Link>
+                {isSignedIn && (
+                  <SignOutButton redirectUrl="/">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`${
+                        isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white"
+                      } hover:bg-red-600 hover:text-white flex items-center gap-2`}
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span className="hidden sm:inline">Logout</span>
+                    </Button>
+                  </SignOutButton>
+                )}
               </div>
             </div>
           </div>

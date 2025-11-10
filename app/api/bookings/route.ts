@@ -22,27 +22,39 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Update analytics
+    // Update analytics - find today's record or create new one
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    await prisma.analytics.upsert({
+    const existingAnalytics = await prisma.analytics.findFirst({
       where: {
-        date: today,
-      },
-      update: {
-        bookingsCount: {
-          increment: 1,
+        date: {
+          gte: today,
+          lt: new Date(today.getTime() + 24 * 60 * 60 * 1000), // Next day
         },
       },
-      create: {
-        date: today,
-        bookingsCount: 1,
-        pageViews: 0,
-        contactFormCount: 0,
-        avgSatisfaction: 0,
-      },
     });
+
+    if (existingAnalytics) {
+      await prisma.analytics.update({
+        where: { id: existingAnalytics.id },
+        data: {
+          bookingsCount: {
+            increment: 1,
+          },
+        },
+      });
+    } else {
+      await prisma.analytics.create({
+        data: {
+          date: today,
+          bookingsCount: 1,
+          pageViews: 0,
+          contactFormCount: 0,
+          avgSatisfaction: 0,
+        },
+      });
+    }
 
     return NextResponse.json(
       { success: true, booking },

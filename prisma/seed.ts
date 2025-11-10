@@ -82,6 +82,33 @@ async function main() {
   }
 
   console.log('✅ Analytics data seeded!');
+
+  // Seed default admin emails
+  const defaultAdmins = [
+    'musanhunyasha@outlook.com',
+    'dennytech84@gmail.com'
+  ];
+
+  for (const email of defaultAdmins) {
+    const existingAdmin = await prisma.adminEmail.findUnique({
+      where: { email }
+    });
+
+    if (!existingAdmin) {
+      await prisma.adminEmail.create({
+        data: {
+          email,
+          isDefault: true,
+          addedBy: 'system'
+        }
+      });
+      console.log(`✅ Added default admin: ${email}`);
+    } else {
+      console.log(`⏭️  Admin already exists: ${email}`);
+    }
+  }
+
+  console.log('✅ Admin emails seeded!');
   console.log('🎉 Seeding complete!');
 }
 

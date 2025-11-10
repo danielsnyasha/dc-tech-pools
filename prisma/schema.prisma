@@ -11,21 +11,60 @@ datasource db {
 }
 
 model Booking {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  customerName  String
-  email         String
-  phone         String
-  serviceType   String
-  poolSize      String?
-  address       String
-  city          String
-  postalCode    String?
-  preferredDate DateTime
-  preferredTime String
-  message       String?
-  status        String   @default("pending") // pending, confirmed, completed, cancelled
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  customerName    String
+  email           String
+  phone           String
+  serviceType     String
+  poolSize        String?
+  address         String
+  city            String
+  postalCode      String?
+  preferredDate   DateTime
+  preferredTime   String
+  message         String?
+  status          String        @default("pending") // pending, confirmed, completed, cancelled
+
+  // Job management fields
+  jobYear         Int?          // Year of the job (e.g., 2025)
+  jobMonth        Int?          // Month (1-12)
+  jobQuarter      String?       // Q1, Q2, Q3, Q4
+
+  // Financial tracking in ZAR (Rands)
+  revenue         Float?        // Total revenue/income received (what admin got)
+  totalExpenses   Float?        // Total expenses (what admin spent)
+  profit          Float?        // Calculated: revenue - totalExpenses
+
+  // Expense breakdown by category
+  laborCost       Float?        // Labor/workforce expenses
+  materialsCost   Float?        // Materials and supplies
+  equipmentCost   Float?        // Equipment rental or purchase
+  transportCost   Float?        // Transport and logistics
+  essentialsCost  Float?        // Other essentials (utilities, permits, etc.)
+
+  // Legacy fields (kept for backward compatibility)
+  allocatedBudget Float?        // Budget allocated for this job
+  actualCost      Float?        // Actual cost incurred
+  jobBreakdown    JobTask[]     // Array of tasks/breakdown items
+
+  // Job completion images (stored in Cloudinary)
+  completionImages String[]     @default([]) // Array of Cloudinary image URLs
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+// Job task breakdown for detailed job planning
+type JobTask {
+  taskName        String
+  description     String?
+  estimatedCost   Float
+  actualCost      Float?
+  category        String?       // labor, materials, equipment, transport, essentials
+  assignedTo      String?       // Team member assigned
+  status          String        // pending, in_progress, completed
+  dueDate         DateTime?
+  completedDate   DateTime?
 }
 
 model Testimonial {
@@ -70,4 +109,13 @@ model Analytics {
   pageViews        Int      @default(0)
   contactFormCount Int      @default(0)
   avgSatisfaction  Float    @default(0)
+}
+
+model AdminEmail {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String   @unique
+  addedBy     String?  // Email of admin who added this
+  isDefault   Boolean  @default(false) // True for the 2 default admins
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

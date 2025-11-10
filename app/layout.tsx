@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -35,6 +36,7 @@ export default function RootLayout({
       <html lang="en" className="scroll-smooth">
         <body className={`${nunito.variable} antialiased`}>
           <ThemeProvider>
+            <Toaster position="top-center" richColors />
             {children}
           </ThemeProvider>
         </body>
