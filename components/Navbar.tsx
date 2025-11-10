@@ -4,7 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, Waves, LogOut } from "lucide-react";
-import { SignOutButton, useAuth } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+  useAuth,
+} from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
 
@@ -45,7 +51,9 @@ export default function Navbar() {
         {/* Top bar */}
         <div
           className={`border-b transition-all duration-300 ${
-            isScrolled ? "border-gray-200 dark:border-gray-700" : "border-white/20"
+            isScrolled
+              ? "border-gray-200 dark:border-gray-700"
+              : "border-white/20"
           }`}
         >
           <div className="container mx-auto px-4">
@@ -76,31 +84,50 @@ export default function Navbar() {
               </div>
               <div className="ml-auto flex items-center gap-3">
                 <ThemeToggle />
-                <Link href="/admin">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className={`${
-                      isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white"
-                    } hover:bg-blue-600 hover:text-white`}
-                  >
-                    Admin Portal
-                  </Button>
-                </Link>
-                {isSignedIn && (
+                <SignedIn>
+                  <Link href="/admin">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`${
+                        isScrolled
+                          ? "text-gray-700 dark:text-gray-300"
+                          : "text-white"
+                      } hover:bg-blue-600 hover:text-white`}
+                    >
+                      Admin Portal
+                    </Button>
+                  </Link>
                   <SignOutButton redirectUrl="/">
                     <Button
                       variant="ghost"
                       size="sm"
                       className={`${
-                        isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white"
+                        isScrolled
+                          ? "text-gray-700 dark:text-gray-300"
+                          : "text-white"
                       } hover:bg-red-600 hover:text-white flex items-center gap-2`}
                     >
                       <LogOut className="w-4 h-4" />
                       <span className="hidden sm:inline">Logout</span>
                     </Button>
                   </SignOutButton>
-                )}
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`${
+                        isScrolled
+                          ? "text-gray-700 dark:text-gray-300"
+                          : "text-white"
+                      } hover:bg-blue-600 hover:text-white`}
+                    >
+                      Login
+                    </Button>
+                  </SignInButton>
+                </SignedOut>
               </div>
             </div>
           </div>
