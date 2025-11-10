@@ -1,4 +1,4 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkMiddleware, createRouteMatcher, currentUser } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
 // Only protect /admin routes and admin-specific API routes
@@ -16,7 +16,8 @@ const DEFAULT_ADMIN_EMAILS = [
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
-    const { userId, sessionClaims } = await auth()
+    const { userId } = await auth()
+    const user = await currentUser()
 
     // If not authenticated at all, require sign in
     if (!userId) {
@@ -24,8 +25,8 @@ export default clerkMiddleware(async (auth, req) => {
       return
     }
 
-    // Get user's primary email from sessionClaims
-    const userEmail = sessionClaims?.email as string | undefined
+    // Get user's primary email from the user object
+    const userEmail = user?.emailAddresses?.[0]?.emailAddress
 
     if (!userEmail) {
       return NextResponse.redirect(new URL('/unauthorized', req.url))
