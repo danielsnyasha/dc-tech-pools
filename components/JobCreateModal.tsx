@@ -640,7 +640,7 @@ export default function JobCreateModal({ isOpen, onClose, onSuccess }: JobCreate
 
                 {formData.jobBreakdown.length === 0 && (
                   <p className="text-center text-muted-foreground py-8 border-2 border-dashed rounded-lg">
-                    No tasks added. Click "Add Task" to create a detailed breakdown.
+                    No tasks added. Click &quot;Add Task&quot; to create a detailed breakdown.
                   </p>
                 )}
               </div>

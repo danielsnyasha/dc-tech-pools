@@ -114,7 +114,7 @@ export default function Booking() {
 
       // Show success toast
       toast.success("Booking Submitted Successfully!", {
-        description: "We'll contact you shortly to confirm your appointment. Check your email for details.",
+        description: "We&apos;ll contact you shortly to confirm your appointment. Check your email for details.",
         duration: 5000,
       });
 
@@ -192,10 +192,10 @@ export default function Booking() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Ready to Get Started?
             <br />
-            <span className="text-gradient">Let's Make It Happen</span>
+            <span className="text-gradient">Let&apos;s Make It Happen</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Schedule a free consultation with our pool experts. We'll visit your property, discuss your vision,
+            Schedule a free consultation with our pool experts. We&apos;ll visit your property, discuss your vision,
             and provide a detailed quote.
           </p>
         </motion.div>
@@ -212,7 +212,7 @@ export default function Booking() {
               <CardHeader>
                 <CardTitle className="text-3xl text-gray-900 dark:text-white">Book Your Consultation</CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-300">
-                  Fill out the form below and we'll get back to you within 24 hours
+                  Fill out the form below and we&apos;ll get back to you within 24 hours
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -224,7 +224,7 @@ export default function Booking() {
                   >
                     <CheckCircle className="w-6 h-6 text-green-600" />
                     <p className="text-green-800 font-medium">
-                      Booking submitted successfully! We'll contact you soon.
+                      Booking submitted successfully! We&apos;ll contact you soon.
                     </p>
                   </motion.div>
                 )}
@@ -449,7 +449,7 @@ export default function Booking() {
               <CardHeader>
                 <CardTitle className="text-3xl">Get in Touch</CardTitle>
                 <CardDescription className="text-white/80">
-                  We're here to answer your questions and bring your pool dreams to life
+                  We&apos;re here to answer your questions and bring your pool dreams to life
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">

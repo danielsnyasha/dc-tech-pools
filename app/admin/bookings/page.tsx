@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Mail, MapPin, Phone, User } from "lucide-react";
@@ -10,11 +10,7 @@ export default function BookingsPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>("all");
 
-  useEffect(() => {
-    fetchBookings();
-  }, [filter]);
-
-  const fetchBookings = async () => {
+  const fetchBookings = useCallback(async () => {
     try {
       const url =
         filter === "all"
@@ -28,7 +24,11 @@ export default function BookingsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
+
+  useEffect(() => {
+    fetchBookings();
+  }, [fetchBookings]);
 
   const updateStatus = async (bookingId: string, newStatus: string) => {
     try {

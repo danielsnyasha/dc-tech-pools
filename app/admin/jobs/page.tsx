@@ -85,6 +85,20 @@ type Job = {
   updatedAt: Date
 }
 
+type MonthlyData = {
+  month: string;
+  monthIndex: number;
+  jobs: number;
+  revenue: number;
+  expenses: number;
+  profit: number;
+};
+
+type ProjectionData = MonthlyData & {
+  projectedRevenue?: number;
+  projectedProfit?: number;
+};
+
 const QUARTERS = ['Q1', 'Q2', 'Q3', 'Q4']
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899']
@@ -172,7 +186,7 @@ export default function JobsPage() {
   })
 
   // Monthly data for year-over-year comparison
-  const monthlyData = MONTHS.map((month, index) => {
+  const monthlyData: MonthlyData[] = MONTHS.map((month, index) => {
     const monthJobs = filteredJobs.filter(j => j.jobMonth === index + 1)
     const revenue = monthJobs.reduce((sum, j) => sum + (j.revenue || 0), 0)
     const expenses = monthJobs.reduce((sum, j) => sum + (j.totalExpenses || 0), 0)
@@ -241,7 +255,7 @@ export default function JobsPage() {
     ? completedJobs.reduce((sum, j) => sum + (j.profit || 0), 0) / completedJobs.length
     : 0
 
-  const projectionData = [...monthlyData]
+  const projectionData: ProjectionData[] = [...monthlyData]
   const lastMonth = monthlyData[new Date().getMonth()]
   if (lastMonth && avgJobRevenue > 0) {
     const currentMonth = new Date().getMonth()

@@ -50,7 +50,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Southern Africa's premier swimming pool specialists. Creating stunning aquatic experiences
+              Southern Africa&apos;s premier swimming pool specialists. Creating stunning aquatic experiences
               across South Africa and neighboring countries with quality craftsmanship and eco-friendly solutions since 2008.
             </p>
             <div className="flex gap-4">

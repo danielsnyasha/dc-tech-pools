@@ -71,7 +71,7 @@ export default function About() {
             </span>
           </motion.div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            South Africa's Leading
+            South Africa&apos;s Leading
             <br />
             <span className="text-gradient">Pool Specialists</span>
           </h2>
@@ -96,8 +96,8 @@ export default function About() {
                 accessible to every South African home while maintaining uncompromising quality standards.
               </p>
               <p>
-                Over the years, we've grown from a small local operation to one of South Africa's most
-                trusted pool service providers. We've completed over 1,000 pool projects, from intimate
+                Over the years, we&apos;ve grown from a small local operation to one of South Africa&apos;s most
+                trusted pool service providers. We&apos;ve completed over 1,000 pool projects, from intimate
                 residential pools to large commercial installations.
               </p>
               <p>

@@ -3,11 +3,11 @@ import { prisma } from "@/lib/prisma";
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const body = await request.json();
-    const { id } = params;
+    const { id } = await context.params;
 
     const booking = await prisma.booking.update({
       where: { id },
@@ -28,10 +28,10 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await context.params;
 
     await prisma.booking.delete({
       where: { id },
@@ -46,3 +46,4 @@ export async function DELETE(
     );
   }
 }
+

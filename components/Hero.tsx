@@ -76,7 +76,7 @@ export default function Hero() {
               transition={{ delay: 0.2 }}
               className="inline-block mb-4 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
             >
-              <span className="text-sm font-semibold">South Africa's Premier Pool Specialists</span>
+              <span className="text-sm font-semibold">South Africa&apos;s Premier Pool Specialists</span>
             </motion.div>
 
             <motion.h1

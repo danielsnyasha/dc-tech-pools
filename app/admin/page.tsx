@@ -85,7 +85,7 @@ export default function AdminDashboard() {
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Dashboard</h1>
-        <p className="text-gray-600 dark:text-gray-300">Welcome back! Here's what's happening with your pool business.</p>
+        <p className="text-gray-600 dark:text-gray-300">Welcome back! Here&apos;s what&apos;s happening with your pool business.</p>
       </div>
 
       {/* Stats Grid */}

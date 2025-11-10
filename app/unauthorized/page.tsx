@@ -51,7 +51,7 @@ export default function UnauthorizedPage() {
             Access Denied
           </CardTitle>
           <CardDescription className="text-gray-600 dark:text-gray-300">
-            You don't have permission to access the admin portal
+            You don&apos;t have permission to access the admin portal
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

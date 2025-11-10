@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "DC Tech Pools - Premium Swimming Pool Services in South Africa",
   description: "Expert swimming pool construction, renovations, maintenance, repairs, and eco-friendly solutions. Transforming backyards across South Africa with quality pool services.",
   keywords: ["swimming pools", "pool construction", "pool maintenance", "pool renovation", "fibreglass pools", "marbelite pools", "pool repairs", "eco-friendly pools", "South Africa"],
-  authors: [{ name: "DC Tech Pools", email: "dennytech84@gmail.com" }],
+  authors: [{ name: "DC Tech Pools" }],
   openGraph: {
     type: "website",
     locale: "en_ZA",

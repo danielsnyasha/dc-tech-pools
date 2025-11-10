@@ -128,7 +128,7 @@ export default function Testimonials() {
             <span className="text-gradient">About Our Services</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-            Don't just take our word for it. See what hundreds of satisfied customers across South Africa
+            Don&apos;t just take our word for it. See what hundreds of satisfied customers across South Africa
             have to say about their experience with DC Tech Pools.
           </p>
 
@@ -181,7 +181,7 @@ export default function Testimonials() {
 
                   {/* Comment */}
                   <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                    "{testimonial.comment}"
+                    &quot;{testimonial.comment}&quot;
                   </p>
 
                   {/* Author Info */}

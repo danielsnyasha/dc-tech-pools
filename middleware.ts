@@ -14,9 +14,9 @@ const DEFAULT_ADMIN_EMAILS = [
   'dennytech84@gmail.com'
 ]
 
-export default clerkMiddleware((auth, req) => {
+export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
-    const { userId, sessionClaims } = auth()
+    const { userId, sessionClaims } = await auth()
 
     // If not authenticated at all, require sign in
     if (!userId) {

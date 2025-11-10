@@ -474,7 +474,7 @@ export default function JobEditModal({ job, isOpen, onClose, onSave }: JobEditMo
 
                 {formData.jobBreakdown.length === 0 && (
                   <p className="text-center text-muted-foreground py-8 border-2 border-dashed rounded-lg">
-                    No tasks added. Click "Add Task" to create a breakdown.
+                    No tasks added. Click &quot;Add Task&quot; to create a breakdown.
                   </p>
                 )}
               </div>

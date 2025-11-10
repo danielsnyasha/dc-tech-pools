@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { auth } from '@clerk/nextjs/server'
+import { auth, currentUser } from '@clerk/nextjs/server'
 
 // GET all admin emails
 export async function GET() {
@@ -25,8 +25,8 @@ export async function GET() {
 // POST - Add new admin email
 export async function POST(request: NextRequest) {
   try {
-    const { emailAddresses } = await auth()
-    const currentUserEmail = emailAddresses?.[0]?.emailAddress || 'system'
+    const user = await currentUser()
+    const currentUserEmail = user?.emailAddresses?.[0]?.emailAddress || 'system'
 
     const body = await request.json()
     const { email } = body
