@@ -26,7 +26,7 @@ const colorMap = {
 
 export default function Services() {
   return (
-    <section id="services" className="py-28 bg-white dark:bg-slate-950">
+    <section id="services" className="seam-top grain py-28 bg-white dark:bg-slate-950">
       <div className="container mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -66,7 +66,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.04 }}
-                className={`group bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 ${c.border}`}
+                className={`lift group relative bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-6 hover:shadow-xl hover:shadow-violet-500/5 dark:hover:border-violet-500/30 focus-within:ring-2 focus-within:ring-violet-500/40 ${c.border}`}
               >
                 <div className={`w-11 h-11 ${c.bg} ${c.text} rounded-xl flex items-center justify-center mb-4`}>
                   <service.icon className="w-5 h-5" />
@@ -79,10 +79,10 @@ export default function Services() {
                 </p>
                 <a
                   href="#contact"
-                  className={`inline-flex items-center gap-1.5 text-sm font-medium ${c.text} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
+                  className={`inline-flex items-center gap-1.5 text-sm font-medium ${c.text} opacity-70 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity duration-200`}
                 >
                   Get a quote
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </motion.div>
             );

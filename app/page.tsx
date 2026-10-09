@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Booking from "@/components/Booking";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import UnauthorizedError from "@/components/UnauthorizedError";
 
 const jsonLd = {
@@ -78,6 +79,7 @@ export default function Home() {
         <Testimonials />
         <Booking />
         <Footer />
+        <WhatsAppButton />
       </main>
     </>
   );

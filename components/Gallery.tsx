@@ -42,7 +42,7 @@ export default function Gallery() {
   const prev = () => selectedImage !== null && setSelectedImage((selectedImage - 1 + filtered.length) % filtered.length);
 
   return (
-    <section id="gallery" className="py-28 bg-slate-50 dark:bg-slate-900">
+    <section id="gallery" className="seam-top grain py-28 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -116,15 +116,15 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
                     <ZoomIn className="w-5 h-5 text-white" />
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5 text-white transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <p className="text-sm font-medium opacity-80">{image.category}</p>
-                  <p className="text-[13px] opacity-60">{image.alt}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-[opacity,transform] duration-300">
+                  <p className="text-sm font-semibold text-fuchsia-300">{image.category}</p>
+                  <p className="text-[13px] text-white/75">{image.alt}</p>
                 </div>
               </motion.div>
             ))}

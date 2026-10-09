@@ -33,7 +33,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-28 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden"
+      className="grain py-28 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden"
     >
       {/* Dot grid */}
       <div

@@ -30,7 +30,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="py-28 bg-white dark:bg-slate-950">
+    <section id="about" className="seam-top grain py-28 bg-white dark:bg-slate-950">
       <div className="container mx-auto px-6 lg:px-8">
 
         {/* Header */}

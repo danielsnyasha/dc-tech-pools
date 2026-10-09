@@ -88,7 +88,22 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en-ZA" className="scroll-smooth">
+      <html lang="en-ZA" className="scroll-smooth dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+        <head>
+          {/*
+            Runs before first paint so the page never flashes the wrong theme.
+            Dark is the default: only an explicit "light" choice opts out, and a
+            blocked localStorage (private mode) still lands on dark.
+          */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "(function(){try{var t=localStorage.getItem('theme');" +
+                "document.documentElement.classList.toggle('dark',t!=='light');}" +
+                "catch(e){document.documentElement.classList.add('dark');}})();",
+            }}
+          />
+        </head>
         <body className={`${nunito.variable} antialiased`}>
           <ThemeProvider>
             <Toaster position="top-center" richColors />

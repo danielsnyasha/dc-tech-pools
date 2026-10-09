@@ -11,30 +11,32 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/**
+ * Single owner of the theme. The inline script in app/layout.tsx has already
+ * put the right class on <html> before paint, so this reads the DOM as the
+ * source of truth rather than guessing a default and causing a flash.
+ */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle("dark", savedTheme === "dark");
-    }
+    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.classList.toggle("dark", next === "dark");
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      // Private mode or blocked storage: the choice just won't persist.
+    }
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Rendered unconditionally so consumers always have context, even on the
+  // first pass. Previously children rendered outside the provider until mount,
+  // which made useTheme() throw for anything that read it during that window.
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

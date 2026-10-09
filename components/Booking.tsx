@@ -86,7 +86,7 @@ export default function Booking() {
   const field = (key: string) => validationErrors[key] ? "border-red-400 focus:border-red-400" : "border-slate-200 dark:border-slate-700";
 
   return (
-    <section id="contact" className="py-28 bg-slate-50 dark:bg-slate-900">
+    <section id="contact" className="seam-top grain py-28 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-6 lg:px-8">
 
         {/* Header */}
