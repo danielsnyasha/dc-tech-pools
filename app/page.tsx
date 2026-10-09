@@ -16,7 +16,7 @@ const jsonLd = {
   "@id": "https://www.dctechpools.co.za",
   name: "DC Tech Pools",
   url: "https://www.dctechpools.co.za",
-  logo: "https://www.dctechpools.co.za/images/pool/beautiful-luxury-outdoor-swimming-pool-hotel-resort.jpg",
+  logo: "https://www.dctechpools.co.za/images/pool/logo.png",
   image: "https://www.dctechpools.co.za/images/pool/beautiful-luxury-outdoor-swimming-pool-hotel-resort.jpg",
   description:
     "DC Tech Pools is South Africa's premier swimming pool specialist offering pool construction, renovation, maintenance, repairs, and eco-friendly solutions since 2008.",
