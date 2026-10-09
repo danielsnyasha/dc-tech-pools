@@ -1,303 +1,126 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  Hammer,
-  Wrench,
-  Droplets,
-  Leaf,
-  Paintbrush,
-  Settings,
-  Sparkles,
-  Shield,
-  Zap,
-  ThermometerSun,
-  Waves,
-  CircleDot,
-} from "lucide-react";
+import { ArrowRight, Hammer, Wrench, Droplets, Leaf, Paintbrush, Settings, Sparkles, Shield, Zap, ThermometerSun, Waves, CircleDot } from "lucide-react";
 
 const services = [
-  {
-    icon: Hammer,
-    title: "New Pool Construction",
-    description: "Custom-designed swimming pools tailored to your space and style. From concept to completion, we build your dream pool.",
-    features: [
-      "Custom design consultation",
-      "Concrete & fibreglass options",
-      "Infinity & vanishing edge pools",
-      "Integrated spa & water features",
-    ],
-    gradient: "from-blue-600 to-blue-400",
-    delay: 0.1,
-  },
-  {
-    icon: Paintbrush,
-    title: "Pool Renovations",
-    description: "Transform your aging pool into a modern masterpiece. Complete makeovers and upgrades to enhance beauty and functionality.",
-    features: [
-      "Surface resurfacing & retiling",
-      "Equipment upgrades",
-      "Modern automation systems",
-      "Energy-efficient conversions",
-    ],
-    gradient: "from-emerald-600 to-emerald-400",
-    delay: 0.2,
-  },
-  {
-    icon: Wrench,
-    title: "Weekly Maintenance",
-    description: "Professional pool maintenance services to keep your pool crystal clear and perfectly balanced year-round.",
-    features: [
-      "Water chemistry testing & balancing",
-      "Filter cleaning & backwashing",
-      "Vacuuming & brushing",
-      "Equipment inspection",
-    ],
-    gradient: "from-purple-600 to-purple-400",
-    delay: 0.3,
-  },
-  {
-    icon: Settings,
-    title: "Equipment Repair & Upgrades",
-    description: "Expert repair and replacement of all pool equipment. We fix pumps, filters, heaters, and automation systems.",
-    features: [
-      "Pump & filter repairs",
-      "Heater installation & repair",
-      "Chlorinator replacement",
-      "Automation system upgrades",
-    ],
-    gradient: "from-orange-600 to-orange-400",
-    delay: 0.4,
-  },
-  {
-    icon: Droplets,
-    title: "Fibreglass Pool Repairs",
-    description: "Specialized fibreglass pool restoration services. We repair cracks, chips, and resurface fibreglass pools.",
-    features: [
-      "Crack & chip repairs",
-      "Gel coat resurfacing",
-      "Color restoration",
-      "Structural integrity checks",
-    ],
-    gradient: "from-cyan-600 to-cyan-400",
-    delay: 0.5,
-  },
-  {
-    icon: Paintbrush,
-    title: "Marbelite Repairs",
-    description: "Expert marbelite pool finishing and repair services. Restore the smooth, beautiful surface of your pool.",
-    features: [
-      "Marbelite resurfacing",
-      "Crack & hollow repairs",
-      "Color matching",
-      "Waterproofing treatment",
-    ],
-    gradient: "from-pink-600 to-pink-400",
-    delay: 0.6,
-  },
-  {
-    icon: Leaf,
-    title: "Eco-Friendly Solutions",
-    description: "Sustainable pool systems that reduce environmental impact and operating costs. Go green with your pool.",
-    features: [
-      "Solar heating systems",
-      "Saltwater chlorination",
-      "Variable speed pumps",
-      "LED lighting upgrades",
-    ],
-    gradient: "from-green-600 to-green-400",
-    delay: 0.7,
-  },
-  {
-    icon: Shield,
-    title: "Pool Safety Systems",
-    description: "Comprehensive safety solutions to protect your family. From covers to fencing and alarms.",
-    features: [
-      "Safety net installations",
-      "Pool fencing & gates",
-      "Alarm systems",
-      "Non-slip surface treatments",
-    ],
-    gradient: "from-red-600 to-red-400",
-    delay: 0.8,
-  },
-  {
-    icon: ThermometerSun,
-    title: "Pool Heating Solutions",
-    description: "Extend your swimming season with efficient heating systems. Solar, gas, and heat pump options.",
-    features: [
-      "Solar heating installation",
-      "Gas heater setup",
-      "Heat pump systems",
-      "Pool blankets & covers",
-    ],
-    gradient: "from-yellow-600 to-yellow-400",
-    delay: 0.9,
-  },
-  {
-    icon: Zap,
-    title: "Automation & Smart Pools",
-    description: "Modern pool automation for effortless control. Manage your pool from your smartphone.",
-    features: [
-      "WiFi-enabled controllers",
-      "Automated chemical dosing",
-      "Remote temperature control",
-      "Smart lighting systems",
-    ],
-    gradient: "from-indigo-600 to-indigo-400",
-    delay: 1.0,
-  },
-  {
-    icon: Waves,
-    title: "Water Features & Fountains",
-    description: "Add elegance with custom water features. Waterfalls, fountains, and decorative elements.",
-    features: [
-      "Waterfall installations",
-      "Deck jets & bubblers",
-      "LED lighting effects",
-      "Custom rock formations",
-    ],
-    gradient: "from-teal-600 to-teal-400",
-    delay: 1.1,
-  },
-  {
-    icon: CircleDot,
-    title: "Pool Tiling & Coping",
-    description: "Beautiful and durable tiling solutions. Enhance your pool's aesthetic with quality materials.",
-    features: [
-      "Mosaic tile installation",
-      "Coping stone replacement",
-      "Waterline tile repairs",
-      "Custom tile designs",
-    ],
-    gradient: "from-slate-600 to-slate-400",
-    delay: 1.2,
-  },
+  { icon: Hammer, title: "New Pool Construction", description: "Custom-designed swimming pools from concept to completion. Concrete, fibreglass, infinity and vanishing edge options.", color: "blue" },
+  { icon: Paintbrush, title: "Pool Renovations", description: "Transform your aging pool into a modern masterpiece with complete resurfacing, retiling and equipment upgrades.", color: "teal" },
+  { icon: Wrench, title: "Weekly Maintenance", description: "Professional care to keep your pool crystal clear year-round — chemistry testing, filtering and equipment checks.", color: "slate" },
+  { icon: Settings, title: "Equipment Repair & Upgrades", description: "Expert repair of pumps, filters, heaters and automation systems. Faster turnaround, longer lifespan.", color: "blue" },
+  { icon: Droplets, title: "Fibreglass Pool Repairs", description: "Specialized fibreglass restoration — crack repairs, gel coat resurfacing and full colour restoration.", color: "teal" },
+  { icon: Paintbrush, title: "Marbelite Repairs", description: "Smooth marbelite finishing and repair. Resurfacing, crack filling, colour matching and waterproofing.", color: "slate" },
+  { icon: Leaf, title: "Eco-Friendly Solutions", description: "Solar heating, saltwater chlorination, variable speed pumps and LED upgrades for sustainable pool ownership.", color: "blue" },
+  { icon: Shield, title: "Pool Safety Systems", description: "Protect your family with safety nets, fencing, gate locks, alarm systems and non-slip surface treatments.", color: "teal" },
+  { icon: ThermometerSun, title: "Pool Heating Solutions", description: "Extend your swimming season with solar, gas or heat pump systems. Pool covers and blankets available.", color: "slate" },
+  { icon: Zap, title: "Automation & Smart Pools", description: "WiFi-enabled controllers, automated chemical dosing and remote temperature management from your phone.", color: "blue" },
+  { icon: Waves, title: "Water Features & Fountains", description: "Waterfalls, deck jets, bubblers and custom LED-lit rock formations to elevate your pool's aesthetic.", color: "teal" },
+  { icon: CircleDot, title: "Pool Tiling & Coping", description: "Mosaic tile installation, coping stone replacement, waterline tile repairs and fully custom tile designs.", color: "slate" },
 ];
+
+const colorMap = {
+  blue: { bg: "bg-blue-50 dark:bg-blue-950/40", text: "text-blue-600 dark:text-blue-400", border: "group-hover:border-blue-200 dark:group-hover:border-blue-800" },
+  teal: { bg: "bg-fuchsia-50 dark:bg-fuchsia-950/40", text: "text-fuchsia-600 dark:text-fuchsia-400", border: "group-hover:border-fuchsia-200 dark:group-hover:border-fuchsia-800" },
+  slate: { bg: "bg-slate-100 dark:bg-slate-800", text: "text-slate-600 dark:text-slate-300", border: "group-hover:border-slate-300 dark:group-hover:border-slate-600" },
+};
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-blue-50 via-emerald-50 to-purple-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
+    <section id="services" className="py-28 bg-white dark:bg-slate-950">
+      <div className="container mx-auto px-6 lg:px-8">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 px-6 py-2 bg-white rounded-full shadow-lg"
-          >
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
-              OUR SERVICES
+          <div className="inline-block mb-4">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 dark:text-blue-400">
+              Our Services
             </span>
-          </motion.div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-5 tracking-tight">
             Complete Pool Solutions
             <br />
-            <span className="text-gradient">Under One Roof</span>
+            <span className="bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
+              Under One Roof
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            From new construction to maintenance and eco-friendly upgrades, we offer comprehensive
+          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+            From new construction to eco-friendly upgrades, we offer comprehensive
             swimming pool services across South Africa.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: service.delay }}
-            >
-              <Card className="h-full group hover:shadow-2xl transition-all duration-500 border-0 overflow-hidden relative bg-white dark:bg-gray-800">
-                {/* Gradient Background on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-
-                <CardHeader>
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-2xl transition-shadow duration-300`}
-                  >
-                    <service.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <CardTitle className="text-2xl mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
-                    {service.title}
-                  </CardTitle>
-                  <CardDescription className="text-base text-gray-600 dark:text-gray-300">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: service.delay + 0.1 * idx }}
-                        className="flex items-start gap-3"
-                      >
-                        <div className={`w-2 h-2 bg-gradient-to-br ${service.gradient} rounded-full mt-2 flex-shrink-0`}></div>
-                        <span className="text-gray-600 dark:text-gray-300">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: service.delay + 0.4 }}
-                    className="mt-6"
-                  >
-                    <a href="#contact">
-                      <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300">
-                        Get a Quote
-                      </Button>
-                    </a>
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, index) => {
+            const c = colorMap[service.color as keyof typeof colorMap];
+            return (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.04 }}
+                className={`group bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 ${c.border}`}
+              >
+                <div className={`w-11 h-11 ${c.bg} ${c.text} rounded-xl flex items-center justify-center mb-4`}>
+                  <service.icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                  {service.description}
+                </p>
+                <a
+                  href="#contact"
+                  className={`inline-flex items-center gap-1.5 text-sm font-medium ${c.text} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
+                >
+                  Get a quote
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* CTA Section */}
+        {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-20 text-center"
+          transition={{ duration: 0.55, delay: 0.2 }}
+          className="mt-16"
         >
-          <Card className="bg-gradient-to-br from-blue-600 via-emerald-600 to-purple-600 border-0 overflow-hidden relative">
-            <CardContent className="py-16 relative z-10">
-              <Sparkles className="w-16 h-16 text-white mx-auto mb-6" />
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div
+            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-blue-950 to-blue-900 px-8 py-14 text-center"
+            style={{
+              backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.08) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-blue-900" />
+            <div className="relative z-10">
+              <Sparkles className="w-10 h-10 text-fuchsia-400 mx-auto mb-5" />
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                 Not Sure Which Service You Need?
               </h3>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-slate-300 mb-8 max-w-xl mx-auto">
                 Our expert team will assess your pool and recommend the best solutions for your needs and budget.
               </p>
               <a href="#contact">
-                <Button size="xl" className="bg-white text-blue-900 hover:bg-gray-100 hover:text-blue-950 shadow-2xl hover:shadow-white/50 transform hover:scale-105 transition-all duration-300 font-bold">
+                <button className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-950 font-semibold rounded-full hover:bg-blue-50 transition-all duration-200 shadow-xl">
                   Schedule Free Consultation
-                </Button>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </a>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

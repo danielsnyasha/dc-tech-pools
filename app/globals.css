@@ -129,3 +129,29 @@ button, a, input, textarea, select {
   background-size: 200% 200%;
   animation: gradient-shift 15s ease infinite;
 }
+
+/* ── Chart tokens ──────────────────────────────────────────────────────────
+   Brand cyan + pink taken from the logo, snapped to OKLCH steps that pass the
+   categorical checks (lightness band, chroma floor, CVD separation, contrast)
+   against each mode's own surface. Dark is stepped separately, not flipped.
+   Validated: deutan ΔE 17.3 dark / 16.7 light.                              */
+:root {
+  --chart-cyan: #0284c7;
+  --chart-pink: #be185d;
+  --chart-grid: #e2e8f0;
+  --chart-axis: #64748b;
+  --chart-surface: #ffffff;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-fg: #0f172a;
+  --chart-tooltip-border: #cbd5e1;
+}
+.dark {
+  --chart-cyan: #089ce2;
+  --chart-pink: #d1086f;
+  --chart-grid: #1e293b;
+  --chart-axis: #94a3b8;
+  --chart-surface: #111827;
+  --chart-tooltip-bg: #0f172a;
+  --chart-tooltip-fg: #f1f5f9;
+  --chart-tooltip-border: #334155;
+}

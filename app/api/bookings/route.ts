@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from '@/lib/admin-auth'
 
 export async function POST(request: NextRequest) {
   try {
@@ -70,6 +71,11 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  const check = await requireAdmin()
+  if (!check.ok) {
+    return NextResponse.json({ success: false, error: check.error }, { status: check.status })
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");

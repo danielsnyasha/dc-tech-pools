@@ -11,18 +11,73 @@ const nunito = Nunito({
   variable: "--font-nunito",
 });
 
+const siteUrl = "https://www.dctechpools.co.za";
+
 export const metadata: Metadata = {
-  title: "DC Tech Pools - Premium Swimming Pool Services in South Africa",
-  description: "Expert swimming pool construction, renovations, maintenance, repairs, and eco-friendly solutions. Transforming backyards across South Africa with quality pool services.",
-  keywords: ["swimming pools", "pool construction", "pool maintenance", "pool renovation", "fibreglass pools", "marbelite pools", "pool repairs", "eco-friendly pools", "South Africa"],
-  authors: [{ name: "DC Tech Pools" }],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "DC Tech Pools | Swimming Pool Services South Africa",
+    template: "%s | DC Tech Pools",
+  },
+  description:
+    "DC Tech Pools — South Africa's premier swimming pool specialists. Expert pool construction, renovations, maintenance & repairs in Johannesburg, Pretoria, Cape Town & beyond. 15+ years experience. Get a free quote today.",
+  keywords: [
+    "swimming pool South Africa",
+    "swimming pool company",
+    "pool construction South Africa",
+    "pool renovation South Africa",
+    "pool maintenance South Africa",
+    "pool repairs",
+    "fibreglass pool",
+    "marbelite pool",
+    "swimming pool Johannesburg",
+    "swimming pool Pretoria",
+    "swimming pool Cape Town",
+    "pool installation",
+    "eco-friendly pool",
+    "pool services",
+    "DC Tech Pools",
+  ],
+  authors: [{ name: "DC Tech Pools", url: siteUrl }],
+  creator: "DC Tech Pools",
+  publisher: "DC Tech Pools",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "en_ZA",
-    url: "https://dc-tech-pools.com",
+    url: siteUrl,
     siteName: "DC Tech Pools",
-    title: "DC Tech Pools - Premium Swimming Pool Services",
-    description: "Expert swimming pool services across South Africa",
+    title: "DC Tech Pools | Swimming Pool Services South Africa",
+    description:
+      "South Africa's premier pool specialists — construction, renovation, maintenance & eco-friendly solutions. 500+ happy clients, 15+ years experience.",
+    images: [
+      {
+        url: "/images/pool/beautiful-luxury-outdoor-swimming-pool-hotel-resort.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DC Tech Pools — Premium Swimming Pool Services South Africa",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DC Tech Pools | Swimming Pool Services South Africa",
+    description:
+      "South Africa's premier pool specialists — construction, renovation, maintenance & eco-friendly solutions.",
+    images: ["/images/pool/beautiful-luxury-outdoor-swimming-pool-hotel-resort.jpg"],
   },
 };
 
@@ -33,7 +88,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className="scroll-smooth">
+      <html lang="en-ZA" className="scroll-smooth">
         <body className={`${nunito.variable} antialiased`}>
           <ThemeProvider>
             <Toaster position="top-center" richColors />

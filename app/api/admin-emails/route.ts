@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { requireAdmin, isDefaultAdmin } from '@/lib/admin-auth'
 
 // GET all admin emails
 export async function GET() {
+  const check = await requireAdmin()
+  if (!check.ok) {
+    return NextResponse.json({ success: false, error: check.error }, { status: check.status })
+  }
+
   try {
     const adminEmails = await prisma.adminEmail.findMany({
-      orderBy: [
-        { isDefault: 'desc' },
-        { createdAt: 'desc' }
-      ]
+      orderBy: [{ isDefault: 'desc' }, { createdAt: 'desc' }],
     })
 
     return NextResponse.json({ success: true, adminEmails })
@@ -22,42 +24,52 @@ export async function GET() {
   }
 }
 
-// POST - Add new admin email
+// POST - authorize a new admin email
 export async function POST(request: NextRequest) {
-  try {
-    const user = await currentUser()
-    const currentUserEmail = user?.emailAddresses?.[0]?.emailAddress || 'system'
+  const check = await requireAdmin()
+  if (!check.ok) {
+    return NextResponse.json({ success: false, error: check.error }, { status: check.status })
+  }
 
+  try {
     const body = await request.json()
     const { email } = body
 
-    if (!email || !email.includes('@')) {
+    if (!email || typeof email !== 'string' || !email.includes('@')) {
       return NextResponse.json(
         { success: false, error: 'Invalid email address' },
         { status: 400 }
       )
     }
 
-    // Check if email already exists
-    const existing = await prisma.adminEmail.findUnique({
-      where: { email }
-    })
+    const normalized = email.trim().toLowerCase()
+
+    const existing = await prisma.adminEmail.findUnique({ where: { email: normalized } })
 
     if (existing) {
       return NextResponse.json(
-        { success: false, error: 'Email already exists in admin list' },
+        { success: false, error: 'Email already has admin access' },
         { status: 400 }
       )
     }
 
-    // Create new admin email
     const adminEmail = await prisma.adminEmail.create({
       data: {
-        email,
-        addedBy: currentUserEmail,
-        isDefault: false
-      }
+        email: normalized,
+        addedBy: check.email,
+        isDefault: isDefaultAdmin(normalized),
+      },
     })
+
+    // If they had a request on file, this grant resolves it.
+    try {
+      await prisma.accessRequest.update({
+        where: { email: normalized },
+        data: { status: 'approved', decidedBy: check.email },
+      })
+    } catch {
+      // No request on file — added directly by an admin.
+    }
 
     return NextResponse.json({ success: true, adminEmail }, { status: 201 })
   } catch (error) {

@@ -1,198 +1,149 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { Waves, Mail, Phone, MapPin, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
-const footerLinks = {
-  services: [
-    "New Pool Construction",
-    "Pool Renovations",
-    "Weekly Maintenance",
-    "Equipment Repairs",
-    "Fibreglass Repairs",
-    "Marbelite Repairs",
-    "Eco-Friendly Solutions",
-    "Pool Safety Systems",
-  ],
-  company: [
-    { name: "About Us", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-  ],
-};
+const services = [
+  "New Pool Construction",
+  "Pool Renovations",
+  "Weekly Maintenance",
+  "Equipment Repairs",
+  "Fibreglass Repairs",
+  "Marbelite Repairs",
+  "Eco-Friendly Solutions",
+  "Pool Safety Systems",
+];
+
+const links = [
+  { name: "About Us", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Gallery", href: "#gallery" },
+  { name: "Testimonials", href: "#testimonials" },
+  { name: "Contact", href: "#contact" },
+];
+
+const socials = [
+  { icon: Facebook, href: "#" },
+  { icon: Instagram, href: "#" },
+  { icon: Twitter, href: "#" },
+  { icon: Linkedin, href: "#" },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white">
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link href="/" className="flex items-center gap-3 mb-6 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full blur-md opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <Waves className="w-10 h-10 text-white relative z-10" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold">DC Tech Pools</h3>
-                <p className="text-sm text-gray-400">Premium Pool Services</p>
-              </div>
+    <footer className="bg-slate-950 text-white">
+      <div className="container mx-auto px-6 lg:px-8 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-block mb-5">
+              <Image
+                src="/images/pool/logo-light.png"
+                alt="Denny Tech Blue Horizon"
+                width={300}
+                height={100}
+                className="h-11 w-auto object-contain"
+              />
             </Link>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Southern Africa&apos;s premier swimming pool specialists. Creating stunning aquatic experiences
-              across South Africa and neighboring countries with quality craftsmanship and eco-friendly solutions since 2008.
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+              Southern Africa&apos;s premier swimming pool specialists. Quality craftsmanship
+              and eco-friendly solutions since 2008.
             </p>
-            <div className="flex gap-4">
-              {[
-                { icon: Facebook, href: "#" },
-                { icon: Instagram, href: "#" },
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-600 hover:to-emerald-600 transition-all duration-300"
+            <div className="flex gap-2">
+              {socials.map(({ icon: Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-600 flex items-center justify-center transition-all duration-200"
                 >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
+                  <Icon className="w-4 h-4 text-slate-400 hover:text-white" />
+                </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h3 className="text-xl font-bold mb-6">Our Services</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((service, index) => (
-                <li key={index}>
-                  <a
-                    href="#services"
-                    className="text-gray-300 hover:text-blue-400 transition-colors flex items-center gap-2 group"
-                  >
-                    <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full group-hover:scale-150 transition-transform"></div>
-                    {service}
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-500 mb-5">Services</h4>
+            <ul className="space-y-2.5">
+              {services.map((s) => (
+                <li key={s}>
+                  <a href="#services" className="text-slate-400 hover:text-white text-sm transition-colors duration-150">
+                    {s}
                   </a>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-xl font-bold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-blue-400 transition-colors flex items-center gap-2 group"
-                  >
-                    <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full group-hover:scale-150 transition-transform"></div>
-                    {link.name}
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-500 mb-5">Quick Links</h4>
+            <ul className="space-y-2.5">
+              {links.map((l) => (
+                <li key={l.name}>
+                  <a href={l.href} className="text-slate-400 hover:text-white text-sm transition-colors duration-150">
+                    {l.name}
                   </a>
                 </li>
               ))}
               <li>
-                <Link
-                  href="/admin"
-                  className="text-gray-300 hover:text-blue-400 transition-colors flex items-center gap-2 group"
-                >
-                  <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full group-hover:scale-150 transition-transform"></div>
+                <Link href="/admin" className="text-slate-400 hover:text-white text-sm transition-colors duration-150">
                   Admin Portal
                 </Link>
               </li>
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className="text-xl font-bold mb-6">Contact Us</h3>
+          {/* Contact */}
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-500 mb-5">Contact</h4>
             <div className="space-y-4">
-              <a
-                href="tel:+27649806086"
-                className="flex items-start gap-3 text-gray-300 hover:text-blue-400 transition-colors group"
-              >
-                <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-emerald-600 transition-all duration-300 flex-shrink-0">
-                  <Phone className="w-5 h-5" />
+              <a href="tel:+27649806086" className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200">
+                  <Phone className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm text-gray-400">Phone</div>
-                  <div>+27 649 806 086</div>
+                  <div className="text-xs text-slate-600 mb-0.5">Phone</div>
+                  <div className="text-slate-300 text-sm group-hover:text-white transition-colors">+27 649 806 086</div>
                 </div>
               </a>
-              <a
-                href="mailto:dennytech84@gmail.com"
-                className="flex items-start gap-3 text-gray-300 hover:text-blue-400 transition-colors group"
-              >
-                <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-emerald-600 transition-all duration-300 flex-shrink-0">
-                  <Mail className="w-5 h-5" />
+              <a href="mailto:dennytech84@gmail.com" className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200">
+                  <Mail className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm text-gray-400">Email</div>
-                  <div className="break-all">dennytech84@gmail.com</div>
+                  <div className="text-xs text-slate-600 mb-0.5">Email</div>
+                  <div className="text-slate-300 text-sm break-all group-hover:text-white transition-colors">dennytech84@gmail.com</div>
                 </div>
               </a>
-              <div className="flex items-start gap-3 text-gray-300">
-                <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5" />
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
                 </div>
                 <div>
-                  <div className="text-sm text-gray-400">Location</div>
-                  <div>Serving South Africa & African Region</div>
+                  <div className="text-xs text-slate-600 mb-0.5">Location</div>
+                  <div className="text-slate-400 text-sm">South Africa &amp; Africa</div>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
-            <p>
-              © {currentYear} DC Tech Pools. All rights reserved. Designed with passion for
-              excellence.
-            </p>
-            <div className="flex flex-wrap gap-6">
-              <a href="#" className="hover:text-blue-400 transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
-                Cookie Policy
-              </a>
-            </div>
+      {/* Bottom bar */}
+      <div className="border-t border-white/5">
+        <div className="container mx-auto px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-slate-600 text-sm">
+            &copy; {year} DC Tech Pools. All rights reserved.
+          </p>
+          <div className="flex gap-5 text-xs text-slate-600">
+            <a href="#" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-400 transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

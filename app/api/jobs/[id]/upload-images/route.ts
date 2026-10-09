@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { auth } from '@clerk/nextjs/server'
+import { requireAdmin } from '@/lib/admin-auth'
 import { v2 as cloudinary } from 'cloudinary'
 
 // Configure Cloudinary
@@ -14,6 +14,11 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const check = await requireAdmin()
+  if (!check.ok) {
+    return NextResponse.json({ error: check.error }, { status: check.status })
+  }
+
   try {
     const { id } = await params
     const formData = await request.formData()
@@ -82,6 +87,11 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const check = await requireAdmin()
+  if (!check.ok) {
+    return NextResponse.json({ error: check.error }, { status: check.status })
+  }
+
   try {
     const { id } = await params
     const body = await request.json()
