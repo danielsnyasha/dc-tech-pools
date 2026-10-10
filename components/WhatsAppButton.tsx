@@ -5,8 +5,8 @@ import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 /** Digits only, international format, no leading + for wa.me. */
-const WHATSAPP_NUMBER = "27649806086";
-const DISPLAY_NUMBER = "+27 64 980 6086";
+const WHATSAPP_NUMBER = "27752694119";
+const DISPLAY_NUMBER = "+27 75 269 4119";
 
 const QUICK_MESSAGES = [
   "I'd like a quote for a new pool",

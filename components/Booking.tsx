@@ -254,7 +254,8 @@ export default function Booking() {
               <p className="text-blue-200 text-sm mb-7">We&apos;re here to bring your pool dreams to life</p>
               <div className="space-y-5">
                 {[
-                  { icon: Phone, label: "Phone", value: "+27 649 806 086", href: "tel:+27649806086" },
+                  { icon: Phone, label: "Phone", value: "+27 75 269 4119", href: "tel:+27752694119" },
+                  { icon: Phone, label: "Alternate", value: "+27 64 980 6086", href: "tel:+27649806086" },
                   { icon: Mail, label: "Email", value: "dennytech84@gmail.com", href: "mailto:dennytech84@gmail.com" },
                   { icon: MapPin, label: "Location", value: "South Africa & African Region", href: undefined },
                   { icon: Clock, label: "Hours", value: "Mon–Fri 8:00–18:00 · Sat 9:00–15:00", href: undefined },

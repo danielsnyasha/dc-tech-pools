@@ -103,15 +103,30 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-500 mb-5">Contact</h4>
             <div className="space-y-4">
-              <a href="tel:+27649806086" className="flex items-start gap-3 group">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200">
+              <div className="flex items-start gap-3 group">
+                <a
+                  href="tel:+27752694119"
+                  aria-label="Call +27 75 269 4119"
+                  className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200"
+                >
                   <Phone className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
-                </div>
+                </a>
                 <div>
                   <div className="text-xs text-slate-600 mb-0.5">Phone</div>
-                  <div className="text-slate-300 text-sm group-hover:text-white transition-colors">+27 649 806 086</div>
+                  <a
+                    href="tel:+27752694119"
+                    className="block text-slate-300 text-sm hover:text-white transition-colors"
+                  >
+                    +27 75 269 4119
+                  </a>
+                  <a
+                    href="tel:+27649806086"
+                    className="block text-slate-500 text-xs hover:text-slate-300 transition-colors"
+                  >
+                    +27 64 980 6086 (alt)
+                  </a>
                 </div>
-              </a>
+              </div>
               <a href="mailto:dennytech84@gmail.com" className="flex items-start gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-200">
                   <Mail className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />

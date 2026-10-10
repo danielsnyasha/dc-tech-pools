@@ -21,7 +21,7 @@ const jsonLd = {
   description:
     "DC Tech Pools is South Africa's premier swimming pool specialist offering pool construction, renovation, maintenance, repairs, and eco-friendly solutions since 2008.",
   foundingDate: "2008",
-  telephone: "+27649806086",
+  telephone: ["+27752694119", "+27649806086"],
   email: "dennytech84@gmail.com",
   address: {
     "@type": "PostalAddress",

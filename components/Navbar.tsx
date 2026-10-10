@@ -94,7 +94,7 @@ export default function Navbar() {
             {/* Right Actions */}
             <div className="hidden lg:flex items-center gap-3">
               <a
-                href="tel:+27649806086"
+                href="tel:+27752694119"
                 className={`hidden xl:flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
                   isScrolled
                     ? "text-slate-500 dark:text-slate-400 hover:text-blue-600"
@@ -102,7 +102,7 @@ export default function Navbar() {
                 }`}
               >
                 <Phone className="w-3.5 h-3.5" />
-                +27 649 806 086
+                +27 75 269 4119
               </a>
               <div className={`hidden xl:block w-px h-5 ${isScrolled ? "bg-slate-200 dark:bg-slate-700" : "bg-white/20"}`} />
               <ThemeToggle />
@@ -207,9 +207,9 @@ export default function Navbar() {
                   </motion.a>
                 ))}
                 <div className="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-3">
-                  <a href="tel:+27649806086" className="flex items-center gap-2.5 px-4 py-2 text-slate-500 text-sm">
+                  <a href="tel:+27752694119" className="flex items-center gap-2.5 px-4 py-2 text-slate-500 text-sm">
                     <Phone className="w-4 h-4" />
-                    +27 649 806 086
+                    +27 75 269 4119
                   </a>
                   <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
                     <button className="w-full py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors">
